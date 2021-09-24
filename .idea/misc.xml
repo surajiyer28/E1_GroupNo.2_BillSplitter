@@ -3,21 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android Studio/android-design-library-master/MiniProject/app/src/main/res/drawable/ic_add_white.xml" value="0.14635416666666667" />
+        <entry key="..\:/Android Studio/android-design-library-master/MiniProject/app/src/main/res/drawable/ic_group_add_white.xml" value="0.14635416666666667" />
         <entry key="..\:/Android Studio/android-design-library-master/MiniProject/app/src/main/res/drawable/rounded_corners.xml" value="0.2703125" />
         <entry key="..\:/Android Studio/android-design-library-master/MiniProject/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Android Studio/android-design-library-master/MiniProject/app/src/main/res/layout/create_new_group_activity.xml" value="0.13020833333333334" />
         <entry key="..\:/Android Studio/android-design-library-master/MiniProject/app/src/main/res/layout/login.xml" value="0.25416666666666665" />
-        <entry key="..\:/Android Studio/android-design-library-master/MiniProject/app/src/main/res/layout/nav_header.xml" value="0.152" />
+        <entry key="..\:/Android Studio/android-design-library-master/MiniProject/app/src/main/res/layout/nav_header.xml" value="0.176" />
         <entry key="..\:/Android Studio/android-design-library-master/MiniProject/app/src/main/res/layout/register.xml" value="0.25416666666666665" />
         <entry key="..\:/Android Studio/android-design-library-master/MiniProject/app/src/main/res/layout/toolbar.xml" value="0.13020833333333334" />
-        <entry key="app/src/main/res/layout/activity_ingroup.xml" value="0.2572463768115942" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.234375" />
-        <entry key="app/src/main/res/layout/create_new_group_activity.xml" value="0.2572463768115942" />
-        <entry key="app/src/main/res/layout/handle_on_group_click_activity.xml" value="0.234375" />
-        <entry key="app/src/main/res/layout/login.xml" value="0.2572463768115942" />
-        <entry key="app/src/main/res/layout/nav_header.xml" value="0.2572463768115942" />
-        <entry key="app/src/main/res/layout/register.xml" value="0.2572463768115942" />
-        <entry key="app/src/main/res/layout/toolbar.xml" value="0.2572463768115942" />
+
+
+        <entry key="..\:/Android Studio/android-design-library-master/MiniProject/app/src/main/res/menu/main_menu.xml" value="0.264" />
+        <entry key="..\:/Android Studio/android-design-library-master/MiniProject/app/src/main/res/menu/save_group_bar_menu.xml" value="0.2" />
+
       </map>
     </option>
   </component>

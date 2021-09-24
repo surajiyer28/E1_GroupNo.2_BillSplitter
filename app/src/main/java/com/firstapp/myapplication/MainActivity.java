@@ -38,13 +38,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
-        View createNewGroup = findViewById(R.id.createNewGroup);
 
-
-        createNewGroup.setOnClickListener(this);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.main_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == R.id.createNewGroup) {
+            Intent intent;
+            intent = new Intent(this,CreateNewGroupActivityActivity.class);startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     // method for handling clicks on our buttons
     @Override
@@ -53,5 +64,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         intent = new Intent(this,CreateNewGroupActivityActivity.class);startActivity(intent);
     }
 
+    @Override
+    public void onBackPressed() {
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            // close the drawer if user clicks on back button while drawer is open
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
 
 }
