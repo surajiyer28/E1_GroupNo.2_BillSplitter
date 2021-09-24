@@ -1,7 +1,6 @@
 package com.firstapp.myapplication;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -53,7 +52,7 @@ public class GroupListActivity extends AppCompatActivity {
         //ViewModelProvider viewModel= new
                // ViewModelProvider(this).get(GroupViewModel.class);
         //groupViewModel = ViewModelProviders.of(this).get(GroupViewModel.class);
-        GroupViewModel viewModel = new ViewModelProvider(this).get(GroupViewModel.class);
+        GroupViewModel groupViewModel = new ViewModelProvider(this).get(GroupViewModel.class);
         //groupViewModel = ViewModelProvider(this, GroupViewModelFactory).get(GroupViewModel.class)
         groupViewModel.getAllGroups().observe(this, new Observer<List<GroupEntity>>() {
             @Override
@@ -65,7 +64,7 @@ public class GroupListActivity extends AppCompatActivity {
                 // check if there are no groups
                 TextView emptyListMsgTV = (TextView) findViewById(R.id.noGroupsMsg);
                 if (adapter.getItemCount() == 0) {
-                    emptyListMsgTV.setText("No groups found :(\nPlease create a new group");
+                    emptyListMsgTV.setText("No groups found.\nPlease create a new group");
                 }
             }
         });
@@ -76,10 +75,7 @@ public class GroupListActivity extends AppCompatActivity {
                 // get group name of the item the user clicked on from groupNames array
                 String gName = groupNames.get(position).gName;
 
-                // create an intent to launch the HandleOnGroupClickActivity, pass the gName along
-               // Intent intent = new Intent(GroupListActivity.this,HandleOnGroupClickActivity.class);
-              //  intent.putExtra(EXTRA_TEXT_GNAME,gName);
-              //  startActivity(intent);
+
             }
         });
     }
