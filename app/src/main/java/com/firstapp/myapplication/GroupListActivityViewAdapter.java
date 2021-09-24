@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.ActionMode;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -124,7 +125,7 @@ public class GroupListActivityViewAdapter extends RecyclerView.Adapter<GroupList
     @NonNull
     @Override
     public GroupListActivityViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.group_list_detail, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_main, parent, false);
         return new GroupListActivityViewHolder(v);
     }
 
@@ -164,7 +165,8 @@ public class GroupListActivityViewAdapter extends RecyclerView.Adapter<GroupList
     }
 
     private void deleteFromDatabase(GroupEntity group) {
-        GroupViewModel groupViewModel = ViewModelProvider.AndroidViewModelfactory.of(thisOfGroupListActivity).get(GroupViewModel.class);
+        GroupViewModel groupViewModel = new ViewModelProvider(thisOfGroupListActivity).get(GroupViewModel.class);
+        //GroupViewModel groupViewModel = ViewModelProvider.of(thisOfGroupListActivity).get(GroupViewModel.class);
         groupViewModel.delete(group);
     }
 

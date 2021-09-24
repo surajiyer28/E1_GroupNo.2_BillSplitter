@@ -97,9 +97,8 @@
             </androidx.cardview.widget.CardView>
 
 
-
-
         </RelativeLayout>
+
     </ScrollView>
 
     <com.google.android.material.navigation.NavigationView
