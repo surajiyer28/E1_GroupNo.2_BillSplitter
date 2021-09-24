@@ -77,8 +77,8 @@ public class GroupListActivityViewAdapter extends RecyclerView.Adapter<GroupList
             super(itemView);
 
             // store all references from our layout for future use
-            textView = itemView.findViewById(R.id.groupListDetailName);
-            relativeLayout = itemView.findViewById(R.id.groupListDetail);
+            //textView = itemView.findViewById(R.id.groupListDetailName);
+            //relativeLayout = itemView.findViewById(R.id.groupListDetail);
         }
 
 

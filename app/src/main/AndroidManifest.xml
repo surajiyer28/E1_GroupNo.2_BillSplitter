@@ -25,7 +25,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CreateNewGroupActivityActivity"
+            android:name=".CreateNewGroupActivity"
             android:exported="true" />
         <activity
             android:name=".NavHeaderActivity"
