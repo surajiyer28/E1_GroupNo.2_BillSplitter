@@ -107,18 +107,12 @@ public class GroupListActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId() == R.id.deleteAllGroups) {
-            if(!groupNames.isEmpty()) {
-                groupViewModel.deleteAll();
-                Toast.makeText(this, "All Groups Deleted", Toast.LENGTH_SHORT).show();
-                return true;
-            }
-            Toast.makeText(this, "Nothing To Delete", Toast.LENGTH_SHORT).show();
-            return super.onOptionsItemSelected(item);
+        if(item.getItemId() == R.id.createNewGroup) {
+            Intent intent;
+            intent = new Intent(this, CreateNewGroupActivity.class);startActivity(intent);
         }
-        // finish if user clicks on back button
-        finish();
-        return true;
+        return super.onOptionsItemSelected(item);
+
     }
 
 

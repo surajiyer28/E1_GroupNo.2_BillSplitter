@@ -35,8 +35,7 @@
             android:gravity="center"
             tools:context=".GroupListActivity">
 
-            <include layout="@layout/toolbar"
-                android:id="@+id/groupListToolbar"/>
+
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/activity_main_toolbar"
                 android:layout_width="match_parent"
@@ -63,20 +62,19 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/group_list_recycler_view"
-                android:layout_below="@+id/groupListToolbar"
-                android:layout_alignParentBottom="true"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#403A3A"
-                android:scrollbars="vertical"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="55dp"
+                android:background="@color/purple_200"
+                android:paddingTop="5dp"
                 android:paddingBottom="5dp"
-                android:paddingTop="5dp"/>
+                android:scrollbars="vertical" />
 
             <TextView
                 android:id="@+id/noGroupsMsg"
                 android:layout_width="match_parent"
                 android:layout_height="595dp"
-                android:layout_below="@+id/groupListToolbar"
                 android:layout_marginTop="3dp"
                 android:gravity="center"
                 android:text="" />

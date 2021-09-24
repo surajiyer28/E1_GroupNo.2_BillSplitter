@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -18,6 +19,32 @@ public class CreateNewGroupActivity extends AppCompatActivity {
     private EditText editText;
 
     private void saveGroup() {
+
+    }
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.create_new_group_activity);
+        Toolbar toolbar = findViewById(R.id.createNewGroupToolbar);
+        setSupportActionBar(toolbar);
+        if(getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+        setTitle("Create New Group");
+
+        editText = findViewById(R.id.createNewGroupName);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        finish(); // initiate finish if user clicks on back button
+        return true;
+    }
+
+    public void saveGroup(View view) {
         final String name = editText.getText().toString();
 
         // check if the name is empty
@@ -42,39 +69,5 @@ public class CreateNewGroupActivity extends AppCompatActivity {
         // else store the group object in database
         groupViewModel.insert(group);
         Toast.makeText(this, "Group created successfully", Toast.LENGTH_SHORT).show();
-    }
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.create_new_group_activity);
-        Toolbar toolbar = findViewById(R.id.createNewGroupToolbar);
-        setSupportActionBar(toolbar);
-        if(getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
-        setTitle("Create New Group");
-
-        editText = findViewById(R.id.createNewGroupName);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // fill toolbar menu with save group item
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.save_group_bar_menu,menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        // save the group to database if user clicks on save group item in the toolbar
-        if(item.getItemId() == R.id.createNewGroupToolbarSaveGroupItem) {
-            saveGroup();
-        }
-
-        finish(); // initiate finish if user clicks on back button
-        return true;
     }
 }

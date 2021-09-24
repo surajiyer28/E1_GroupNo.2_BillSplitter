@@ -34,5 +34,6 @@
         android:layout_gravity="end|bottom"
         android:layout_margin="16dp"
         android:backgroundTint="@color/white"
-        android:src="@drawable/ic_check_white" />
+        android:src="@drawable/ic_check_white"
+        android:onClick="saveGroup"/>
 </LinearLayout>
