@@ -1,44 +1,53 @@
 package com.firstapp.myapplication;
 
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class GroupListActivity extends AppCompatActivity {
-    public static final String EXTRA_TEXT_GNAME = "com.nishantboro.splititeasy.EXTRA_TEXT_GNAME";
+public class GroupListActivity extends AppCompatActivity implements View.OnClickListener {
+    private DrawerLayout drawer;
+    public static final String EXTRA_TEXT_GNAME = "com.firstapp.myapplication.EXTRA_TEXT_GNAME";
     private List<GroupEntity> groupNames = new ArrayList<>();
     private GroupListActivityViewAdapter adapter;
     private GroupViewModel groupViewModel;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.group_list_activity);
+        setContentView(R.layout.activity_main);
 
-        // set toolbar
-        Toolbar toolbar = findViewById(R.id.groupListToolbar);
+        //set toolbar
+        Toolbar toolbar = findViewById(R.id.activity_main_toolbar);
         setSupportActionBar(toolbar);
         if(getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+           getSupportActionBar().setElevation(0); // removes shadow/elevation between toolbar and status bar
         }
-        setTitle("Groups");
+        setTitle("");
+         //set drawer
+        drawer = findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
 
         // prepare recycler view
         RecyclerView recyclerView = findViewById(R.id.group_list_recycler_view);
@@ -48,12 +57,7 @@ public class GroupListActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
 
-        // if data in database(Group) changes, call the onChanged() below
-        //ViewModelProvider viewModel= new
-               // ViewModelProvider(this).get(GroupViewModel.class);
-        //groupViewModel = ViewModelProviders.of(this).get(GroupViewModel.class);
-        GroupViewModel groupViewModel = new ViewModelProvider(this).get(GroupViewModel.class);
-        //groupViewModel = ViewModelProvider(this, GroupViewModelFactory).get(GroupViewModel.class)
+        groupViewModel = ViewModelProviders.of(this).get(GroupViewModel.class);
         groupViewModel.getAllGroups().observe(this, new Observer<List<GroupEntity>>() {
             @Override
             public void onChanged(List<GroupEntity> groupEntities) {
@@ -64,10 +68,12 @@ public class GroupListActivity extends AppCompatActivity {
                 // check if there are no groups
                 TextView emptyListMsgTV = (TextView) findViewById(R.id.noGroupsMsg);
                 if (adapter.getItemCount() == 0) {
-                    emptyListMsgTV.setText("No groups found.\nPlease create a new group");
+                    emptyListMsgTV.setText("No groups found :(\nPlease create a new group");
                 }
             }
         });
+
+
 
         adapter.setOnItemClickListener(new GroupListActivityViewAdapter.OnGroupClickListener() {
             @Override
@@ -75,17 +81,29 @@ public class GroupListActivity extends AppCompatActivity {
                 // get group name of the item the user clicked on from groupNames array
                 String gName = groupNames.get(position).gName;
 
+                Intent intent = new Intent(GroupListActivity.this,HandleOnGroupClickActivity.class);
+                intent.putExtra(EXTRA_TEXT_GNAME,gName);
+                startActivity(intent);
 
             }
         });
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.group_list_menu,menu);
-        return true;
+        menuInflater.inflate(R.menu.main_menu,menu);
+        return super.onCreateOptionsMenu(menu);
     }
+
+    // method for handling clicks on our buttons
+    @Override
+    public void onClick(View v) {
+        Intent intent;
+        intent = new Intent(this, CreateNewGroupActivity.class);startActivity(intent);
+    }
+
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -103,6 +121,9 @@ public class GroupListActivity extends AppCompatActivity {
         return true;
     }
 
+
+
+
     @Override
     public void onPause() {
         if(adapter.multiSelect) {
@@ -113,4 +134,15 @@ public class GroupListActivity extends AppCompatActivity {
         }
         super.onPause();
     }
+
+    @Override
+    public void onBackPressed() {
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            // close the drawer if user clicks on back button while drawer is open
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
 }
