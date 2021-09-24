@@ -13,10 +13,34 @@
         android:layout_height="wrap_content"
         android:padding="18dp"
         android:text="Register"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="30dp" />
+
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:backgroundTint="#330000"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="130dp"
+            android:text="Select Image"
+            android:textColor="@android:color/white"
+            android:textSize="15dp"
+            android:onClick="getImage"
+            />
+        <ImageView
+            android:id="@+id/imageview"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginHorizontal="150dp"
+            android:layout_gravity="left"
+            android:background="@drawable/rounded_corners"
+            />
+
 
     <TableRow
         android:id="@+id/Row1"
@@ -45,7 +69,6 @@
             android:textSize="16dp"/>
 
     </TableRow>
-
     <!-- first row of the table layout-->
     <TableRow
         android:id="@+id/Row2"
@@ -168,7 +191,7 @@
         android:id="@+id/register"
         android:text="Register"
         android:layout_marginHorizontal="80dp"
-        android:layout_marginVertical="80dp"
+        android:layout_marginVertical="20dp"
         android:background="@color/purple_500"
         android:onClick="register"
         android:backgroundTint="#330000"
