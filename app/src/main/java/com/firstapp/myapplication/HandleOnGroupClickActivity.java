@@ -41,9 +41,9 @@ import com.google.android.material.tabs.TabLayout;
             // pass along the group name so that the fragment can generate all the members of the group the user clicked on in GroupList activity
             adapter.addFragment(MembersTabFragment.newInstance(gName),"Members");
             // pass along the group name so that the fragment can generate all the expenses of the group the user clicked on in GroupList activity
-            //adapter.addFragment(ExpensesTabFragment.newInstance(gName),"Expenses");
+            adapter.addFragment(ExpensesTabFragment.newInstance(gName),"Expenses");
             // pass along the group name so that the fragment can generate all the balances of the group the user clicked on in GroupList activity
-            //adapter.addFragment(BalancesTabFragment.newInstance(gName),"Balances");
+            adapter.addFragment(BalancesTabFragment.newInstance(gName),"Balances");
 
             viewPager.setAdapter(adapter);
             tabLayout.setupWithViewPager(viewPager);

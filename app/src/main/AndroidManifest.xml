@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.firstapp.myapplication">
 
     <application
@@ -10,7 +11,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity
+            android:name=".BalancesTabFragment"
+            android:exported="true"
+            tools:ignore="Instantiatable" />
+        <activity
+            android:name=".ExpensesTabFragment"
+            android:exported="true"
+            tools:ignore="Instantiatable" />
+        <activity
             android:name=".GroupListActivity"
+            android:exported="true" />
+        <activity
+            android:name=".AddEditMemberActivity"
             android:exported="true" />
         <activity
             android:name=".RegisterActivity"
@@ -30,12 +42,7 @@
         <activity
             android:name=".NavHeaderActivity"
             android:exported="true" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
-
-        </activity>
-        <activity android:name=".HandleOnGroupClickActivity$HandleOnGroupClickActivity" />
+        <activity android:name=".HandleOnGroupClickActivity" />
     </application>
 
 </manifest>

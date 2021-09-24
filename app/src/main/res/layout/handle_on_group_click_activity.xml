@@ -18,7 +18,7 @@
         android:id="@+id/tablayout_id"
         app:tabTextColor="#702D2D"
         app:tabIndicatorColor="#702D2D"
-        android:background="#874293">
+        android:background="@color/purple_500">
 
     </com.google.android.material.tabs.TabLayout>
 

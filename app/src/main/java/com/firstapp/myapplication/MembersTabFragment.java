@@ -78,9 +78,10 @@ public class MembersTabFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), AddEditMemberActivity.class);
                 intent.putExtra("groupName",gName);
                 intent.putExtra("requestCode",1); // using requestCode(value = 1) to identify add member intent
-                if(getActivity() != null) {
+                startActivity(intent);
+                //if(getActivity() != null) {
                     getActivity().startActivityFromFragment(MembersTabFragment.this,intent,1);
-                }
+               // }
             }
         });
 
@@ -126,6 +127,8 @@ public class MembersTabFragment extends Fragment {
             return super.onOptionsItemSelected(item);
         }
     }
+
+
 
     @Override
     public void onPause() {

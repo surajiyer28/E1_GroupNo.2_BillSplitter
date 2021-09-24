@@ -8,17 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.ActionMode;
-import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
 import java.util.List;
-
-
 
 /* Objective: Prepare a custom adapter that could create/update the view for every item in the recycler view */
 public class GroupListActivityViewAdapter extends RecyclerView.Adapter<GroupListActivityViewAdapter.GroupListActivityViewHolder>{
@@ -125,7 +121,7 @@ public class GroupListActivityViewAdapter extends RecyclerView.Adapter<GroupList
     @NonNull
     @Override
     public GroupListActivityViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_main, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.group_list_detail, parent, false);
         return new GroupListActivityViewHolder(v);
     }
 
@@ -165,8 +161,7 @@ public class GroupListActivityViewAdapter extends RecyclerView.Adapter<GroupList
     }
 
     private void deleteFromDatabase(GroupEntity group) {
-        GroupViewModel groupViewModel = new ViewModelProvider(thisOfGroupListActivity).get(GroupViewModel.class);
-        //GroupViewModel groupViewModel = ViewModelProvider.of(thisOfGroupListActivity).get(GroupViewModel.class);
+        GroupViewModel groupViewModel = ViewModelProviders.of(thisOfGroupListActivity).get(GroupViewModel.class);
         groupViewModel.delete(group);
     }
 

@@ -4,20 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center">
-
-
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/membersRecyclerView"
+        android:id="@+id/expensesRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#515050"
-        android:backgroundTint="@color/purple_200"
-        android:paddingTop="2.5dp"
+        android:scrollbars="vertical"
+        android:background="@color/purple_200"
         android:paddingBottom="2.5dp"
-        android:scrollbars="vertical" />
+        android:paddingTop="2.5dp"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/membersFragmentAdd"
+        android:id="@+id/expensesFragmentAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -27,7 +24,6 @@
         android:layout_marginEnd="33dp"
         android:layout_marginRight="33dp"
         android:layout_marginBottom="41dp"
-        android:backgroundTint="#ffff"
         android:src="@drawable/ic_add_white" />
 
 </RelativeLayout>

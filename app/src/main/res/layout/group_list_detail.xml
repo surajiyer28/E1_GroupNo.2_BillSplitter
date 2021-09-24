@@ -41,7 +41,7 @@
             android:layout_toEndOf="@+id/groupListDetailImage"
             android:layout_toRightOf="@+id/groupListDetailImage"
             android:text="Group A"
-            android:textColor="#ffff"
+            android:textColor="#040303"
             android:textSize="20sp"
             android:textStyle="bold" />
 

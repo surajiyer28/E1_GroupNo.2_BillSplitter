@@ -7,16 +7,14 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -35,19 +33,14 @@ public class GroupListActivity extends AppCompatActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //set toolbar
+
         Toolbar toolbar = findViewById(R.id.activity_main_toolbar);
         setSupportActionBar(toolbar);
         if(getSupportActionBar() != null) {
-           getSupportActionBar().setElevation(0); // removes shadow/elevation between toolbar and status bar
+            getSupportActionBar().setElevation(0); // removes shadow/elevation between toolbar and status bar
         }
         setTitle("");
-         //set drawer
-        drawer = findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
-                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
+
 
         // prepare recycler view
         RecyclerView recyclerView = findViewById(R.id.group_list_recycler_view);
@@ -57,7 +50,7 @@ public class GroupListActivity extends AppCompatActivity implements View.OnClick
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
 
-        groupViewModel = ViewModelProviders.of(this).get(GroupViewModel.class);
+        groupViewModel = new ViewModelProvider(this).get(GroupViewModel.class);
         groupViewModel.getAllGroups().observe(this, new Observer<List<GroupEntity>>() {
             @Override
             public void onChanged(List<GroupEntity> groupEntities) {
