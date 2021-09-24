@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".MainActivity"
+    tools:context=".GroupListActivity"
     android:orientation="vertical"
     android:background="@color/purple_200"
     android:id="@+id/drawer_layout"
@@ -16,11 +16,27 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="2.5dp"
+            android:layout_marginBottom="2.5dp"
+            tools:ignore="HardcodedText"
+            app:cardCornerRadius="7dp">
+
+
         <RelativeLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:gravity="center"
+            tools:context=".GroupListActivity">
 
+            <include layout="@layout/toolbar"
+                android:id="@+id/groupListToolbar"/>
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/activity_main_toolbar"
                 android:layout_width="match_parent"
@@ -45,60 +61,28 @@
 
             </androidx.appcompat.widget.Toolbar>
 
-            <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/group_list_recycler_view"
+                android:layout_below="@+id/groupListToolbar"
+                android:layout_alignParentBottom="true"
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="60dp"
-                android:layout_marginBottom="2.5dp"
-                android:backgroundTint="@color/white"
-                xmlns:tools="http://schemas.android.com/tools"
-                tools:ignore="HardcodedText"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                app:cardCornerRadius="7dp">
+                android:layout_height="match_parent"
+                android:background="#403A3A"
+                android:scrollbars="vertical"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"/>
 
-                <RelativeLayout
-                    android:id="@+id/groupListDetail"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:id="@+id/groupListDetailImage"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:padding="2dp"
-                        android:src="@drawable/ic_group_detail"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginLeft="14dp"
-                        android:layout_marginStart="14dp"
-                        android:contentDescription="Group icon"
-                        />
-
-                    <TextView
-                        android:id="@+id/groupListDetailName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginTop="25dp"
-                        android:layout_toEndOf="@+id/groupListDetailImage"
-                        android:layout_toRightOf="@+id/groupListDetailImage"
-                        android:text="Group A"
-                        android:textColor="@color/black"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-
-                </RelativeLayout>
-
-
-            </androidx.cardview.widget.CardView>
-
+            <TextView
+                android:id="@+id/noGroupsMsg"
+                android:layout_width="match_parent"
+                android:layout_height="595dp"
+                android:layout_below="@+id/groupListToolbar"
+                android:layout_marginTop="3dp"
+                android:gravity="center"
+                android:text="" />
 
         </RelativeLayout>
-
+        </androidx.cardview.widget.CardView>
     </ScrollView>
 
     <com.google.android.material.navigation.NavigationView
@@ -109,3 +93,4 @@
         app:headerLayout="@layout/nav_header" />
 
 </androidx.drawerlayout.widget.DrawerLayout>
+

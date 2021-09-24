@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
                 ed2.getText().toString().equals("aanch")) {
             Toast.makeText(getApplicationContext(),
                     "Login Success",Toast.LENGTH_SHORT).show();
-            Intent Login = new Intent(LoginActivity.this, MainActivity.class);
+            Intent Login = new Intent(LoginActivity.this, GroupListActivity.class);
             startActivity(Login);
 
         }else{
