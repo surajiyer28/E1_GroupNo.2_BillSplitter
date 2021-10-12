@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     tools:ignore="HardcodedText"
-    android:background="@color/purple_200">
+    android:background="@color/white">
 
     <TextView
         android:id="@+id/balancesHeader"
@@ -21,6 +21,8 @@
         android:id="@+id/balancesRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#515050"
+        android:backgroundTint="@color/white"
         android:scrollbars="vertical"
         android:paddingBottom="2.5dp"
         android:paddingTop="2.5dp"/>
@@ -30,10 +32,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="No one is owed money"
+        android:textColor="@color/grey"
         android:textSize="25sp"
         android:textStyle="italic"
         android:layout_gravity="center"
         android:visibility="gone"
         android:layout_marginTop="250dp"/>
+
+
 
 </LinearLayout>

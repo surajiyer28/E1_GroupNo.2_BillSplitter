@@ -7,7 +7,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 
-@Database(entities = {MemberEntity.class, GroupEntity.class}, version = 2, exportSchema = false)
+@Database(entities = {MemberEntity.class, GroupEntity.class, BillEntity.class}, version = 2, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
     private static final String db_name = "TTMM";
     private static AppDatabase instance;
@@ -21,6 +21,9 @@ public abstract class AppDatabase extends RoomDatabase {
         return instance;
     }
 
-    public abstract GroupDao groupDao();
+
     public abstract MemberDao memberDao();
+    public abstract BillDao billDao();
+    public abstract GroupDao groupDao();
+
 }

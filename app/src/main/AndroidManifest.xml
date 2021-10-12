@@ -43,6 +43,7 @@
             android:name=".NavHeaderActivity"
             android:exported="true" />
         <activity android:name=".HandleOnGroupClickActivity" />
+        <activity android:name=".AddEditBillActivity" />
     </application>
 
 </manifest>

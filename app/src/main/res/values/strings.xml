@@ -1,4 +1,10 @@
 <resources>
+    <string-array name="currencySymbols">
+        <item>INR-(₹)</item>
+        <item>USD-($)</item>
+        <item>EUR-(€)</item>
+        <item>YEN-(¥)</item>
+    </string-array>
     <string name="app_name">My Application</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
