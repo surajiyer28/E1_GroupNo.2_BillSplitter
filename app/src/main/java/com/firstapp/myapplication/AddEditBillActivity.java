@@ -44,12 +44,16 @@ public class AddEditBillActivity extends AppCompatActivity implements AdapterVie
     private String gName;
     private String paidBy;
     private int memberId;
+    private byte [] image;
     private int requestCode;
     private int billId;
     ImageView imageView;
     Bitmap bmpImage;
+    Bitmap bmp;
+    byte [] img;
     final int CAMERA_INTENT = 51;
     private static final int MY_CAMERA_PERMISSION_CODE = 100;
+
 
 
 
@@ -72,11 +76,13 @@ public class AddEditBillActivity extends AppCompatActivity implements AdapterVie
 
             // store to database
 //            Log.d("1", Integer.toString(memberId));
-            billViewModel.insert(new BillEntity(memberId,item,res.toString(),gName,paidBy));
+            image = DataConverter.convertBitmap2ByteArray(bmpImage);
+            billViewModel.insert(new BillEntity(memberId,item,res.toString(),gName,paidBy, image));
         }
 
         if(requestCode == 2) { // 2 for Edit Bill Activity
-            BillEntity bill = new BillEntity(memberId,item,cost,gName,paidBy);
+            image = DataConverter.convertBitmap2ByteArray(bmpImage);
+            BillEntity bill = new BillEntity(memberId,item,cost,gName,paidBy, image);
             bill.setId(billId);
 
             /* update the database. note that update operation in billViewModel looks for a row in BillEntity where the value of column("Id")  = billId
@@ -198,6 +204,9 @@ public class AddEditBillActivity extends AppCompatActivity implements AdapterVie
             setTitle("Edit expense");
             editTextItem.setText(intent.getStringExtra("billName")); // set default text received from the intent
             editTextCost.setText(intent.getStringExtra("billCost")); // set default text received from the intent
+            image = intent.getByteArrayExtra("billImage");
+            bmpImage = DataConverter.convertByteArray2Image(image);
+            imageView.setImageBitmap(bmpImage);
             paidBy = intent.getStringExtra("billPaidBy");
         } else {
             setTitle("Add an Expense");
@@ -302,5 +311,10 @@ public class AddEditBillActivity extends AppCompatActivity implements AdapterVie
                 }
                 break;
         }
+    }
+
+    public Bitmap getBmpImage() {
+
+        return bmpImage;
     }
 }

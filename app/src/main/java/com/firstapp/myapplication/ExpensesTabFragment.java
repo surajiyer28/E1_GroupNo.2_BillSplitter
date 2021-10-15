@@ -1,6 +1,6 @@
 package com.firstapp.myapplication;
 
-import static androidx.lifecycle.ViewModelProviders.*;
+import static androidx.lifecycle.ViewModelProviders.of;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,14 +11,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -117,6 +119,7 @@ public class ExpensesTabFragment extends Fragment {
                 intent.putExtra("billMemberId",bill.mid);
                 intent.putExtra("billName",bill.item);
                 intent.putExtra("groupCurrency", currency.toString());
+                intent.putExtra("billImage",bill.image);
                 intent.putExtra(GroupListActivity.EXTRA_TEXT_GNAME,bill.gName);
                 intent.putExtra("requestCode",2); // using requestCode(value = 2) to identify edit expense intent
 

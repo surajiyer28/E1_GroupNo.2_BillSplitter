@@ -7,8 +7,9 @@
     tools:ignore="HardcodedText"
     tools:context=".AddEditBillActivity">
 
-    <include layout="@layout/toolbar"
-        android:id="@+id/addBillToolbar"/>
+    <include
+        android:id="@+id/addBillToolbar"
+        layout="@layout/toolbar" />
 
     <EditText
         android:id="@+id/addBillItemName"
@@ -81,10 +82,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:backgroundTint="@color/purple_500"
-        android:text="+ Add Bill"
         android:layout_marginHorizontal="2dp"
-        android:layout_marginBottom="45dp"/>
+        android:layout_marginBottom="45dp"
+        android:backgroundTint="@color/purple_500"
+        android:text="+ Add Bill" />
 
     <Button
         android:layout_width="match_parent"
