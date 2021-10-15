@@ -1,7 +1,13 @@
 package com.firstapp.myapplication;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
@@ -10,14 +16,19 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import java.math.BigDecimal;
@@ -35,6 +46,12 @@ public class AddEditBillActivity extends AppCompatActivity implements AdapterVie
     private int memberId;
     private int requestCode;
     private int billId;
+    ImageView imageView;
+    Bitmap bmpImage;
+    final int CAMERA_INTENT = 51;
+    private static final int MY_CAMERA_PERMISSION_CODE = 100;
+
+
 
     private void saveExpense() {
         String item = editTextItem.getText().toString();
@@ -46,7 +63,7 @@ public class AddEditBillActivity extends AppCompatActivity implements AdapterVie
             return;
         }
 
-        BillViewModel billViewModel = ViewModelProviders.of(this,new BillViewModelFactory(getApplication(),gName)).get(BillViewModel.class);
+        BillViewModel billViewModel = new ViewModelProvider(this,new BillViewModelFactory(getApplication(),gName)).get(BillViewModel.class);
 
         if(requestCode == 1) { // 1 for Add Bill Activity
             // Round up the cost of the bill to 2 decimal places
@@ -80,6 +97,9 @@ public class AddEditBillActivity extends AppCompatActivity implements AdapterVie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_bill);
 
+        imageView = findViewById(R.id.userImage);
+        bmpImage = null;
+
         // set toolbar
         Toolbar toolbar = findViewById(R.id.addBillToolbar);
         setSupportActionBar(toolbar);
@@ -104,6 +124,24 @@ public class AddEditBillActivity extends AppCompatActivity implements AdapterVie
                     editTextCost.setText(str2);
                     int pos = editTextCost.getText().length();
                     editTextCost.setSelection(pos);
+                }
+            }
+        });
+
+        Button photoButton = (Button) this.findViewById(R.id.btnPhoto);
+        photoButton.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
+            @Override
+            public void onClick(View view) {
+                if (checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
+                {
+                    requestPermissions(new String[]{Manifest.permission.CAMERA}, MY_CAMERA_PERMISSION_CODE);
+                }
+                else{
+                    Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(cameraIntent, CAMERA_INTENT);
+
+
                 }
             }
         });
@@ -229,5 +267,40 @@ public class AddEditBillActivity extends AppCompatActivity implements AdapterVie
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults)
+    {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == MY_CAMERA_PERMISSION_CODE)
+        {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED)
+            {
+                Toast.makeText(this, "Camera permission granted", Toast.LENGTH_LONG).show();
+                Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(cameraIntent, CAMERA_INTENT);
+            }
+            else
+            {
+                Toast.makeText(this, "Camera permission denied", Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch(requestCode){
+            case CAMERA_INTENT:
+                if(resultCode == Activity.RESULT_OK){
+                    bmpImage = (Bitmap) data.getExtras().get("data");
+                    if(bmpImage != null){
+                        imageView.setImageBitmap(bmpImage);
+                    }
+                }
+                break;
+        }
     }
 }

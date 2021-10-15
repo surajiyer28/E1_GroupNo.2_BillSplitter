@@ -52,6 +52,8 @@ public class BillEntity {
     @ColumnInfo(name = "GroupName")
     String gName;
 
+
+
     public void setId(int id) {
         this.id = id;
     }

@@ -68,4 +68,32 @@
         android:layout_toEndOf="@+id/addBillTextPaidBy"
         android:layout_toRightOf="@+id/addBillTextPaidBy" />
 
+    <ImageView
+        android:id="@+id/userImage"
+        android:layout_width="match_parent"
+        android:layout_alignTop="@+id/addBillItemPaidBy"
+        android:layout_marginTop="70dp"
+        android:layout_marginHorizontal="15dp"
+        android:layout_height="100dp"/>
+
+    <Button
+        android:id="@+id/btnPhoto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:backgroundTint="@color/purple_500"
+        android:text="+ Add Bill"
+        android:layout_marginHorizontal="2dp"
+        android:layout_marginBottom="45dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:backgroundTint="@color/purple_500"
+        android:text="+ Add Route"
+        android:layout_marginHorizontal="2dp"/>
+
+
 </RelativeLayout>

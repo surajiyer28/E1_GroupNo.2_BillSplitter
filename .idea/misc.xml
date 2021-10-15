@@ -13,7 +13,7 @@
         <entry key="..\:/GitHub/MiniProject/app/src/main/res/drawable/ic_add_white.xml" value="0.22395833333333334" />
         <entry key="..\:/GitHub/MiniProject/app/src/main/res/drawable/ic_check_white.xml" value="0.14635416666666667" />
         <entry key="..\:/GitHub/MiniProject/app/src/main/res/drawable/rounded_corners.xml" value="0.14635416666666667" />
-        <entry key="..\:/GitHub/MiniProject/app/src/main/res/layout/activity_add_new_bill.xml" value="0.20461538461538462" />
+        <entry key="..\:/GitHub/MiniProject/app/src/main/res/layout/activity_add_new_bill.xml" value="0.1" />
         <entry key="..\:/GitHub/MiniProject/app/src/main/res/layout/activity_main.xml" value="0.10550458715596331" />
         <entry key="..\:/GitHub/MiniProject/app/src/main/res/layout/add_member_avatar_spinner_row.xml" value="0.23854166666666668" />
         <entry key="..\:/GitHub/MiniProject/app/src/main/res/layout/balances_detail.xml" value="0.13020833333333334" />
@@ -29,6 +29,7 @@
         <entry key="..\:/GitHub/MiniProject/app/src/main/res/layout/members_fragment.xml" value="0.23854166666666668" />
         <entry key="..\:/GitHub/MiniProject/app/src/main/res/layout/nav_header.xml" value="0.21145833333333333" />
         <entry key="..\:/GitHub/MiniProject/app/src/main/res/layout/register.xml" value="0.23854166666666668" />
+        <entry key="..\:/GitHub/MiniProject/app/src/main/res/layout/simple_spinner_item.xml" value="0.13020833333333334" />
         <entry key="..\:/GitHub/MiniProject/app/src/main/res/layout/spinner_item_member.xml" value="0.20461538461538462" />
         <entry key="..\:/GitHub/MiniProject/app/src/main/res/layout/toolbar.xml" value="0.25416666666666665" />
         <entry key="..\:/GitHub/MiniProject/app/src/main/res/menu/expenses_fragment_menu.xml" value="0.13020833333333334" />
