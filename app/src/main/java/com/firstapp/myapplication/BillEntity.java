@@ -60,7 +60,6 @@ public class BillEntity {
     byte [] image;
 
 
-
     public void setId(int id) {
         this.id = id;
     }
