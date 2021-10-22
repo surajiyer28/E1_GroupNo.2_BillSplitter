@@ -5,199 +5,109 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/purple_200"
-    android:stretchColumns="1"> <!-- stretch the second column of the layout-->
-
+    android:stretchColumns="1"
+    android:padding="20dp"> <!-- stretch the second column of the layout-->
     <TextView
         android:id="@+id/Register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="18dp"
         android:text="Register"
-        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
         android:textAlignment="center"
-        android:textColor="@color/white"
+        android:layout_marginTop="20dp"
         android:textSize="30dp" />
 
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_centerHorizontal="true"
-            android:backgroundTint="#330000"
-            android:layout_marginTop="10dp"
-            android:layout_marginHorizontal="130dp"
-            android:text="Select Image"
-            android:textColor="@android:color/white"
-            android:textSize="15dp"
-            android:onClick="getImage"
-            />
-        <ImageView
-            android:id="@+id/imageview"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginHorizontal="150dp"
-            android:layout_gravity="left"
-            android:background="@drawable/rounded_corners"
-            />
-
-
-    <TableRow
-        android:id="@+id/Row1"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        >
-        <TextView
-
-            android:id="@+id/name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="18dp"
-            android:text="Name"
-            android:textColor="@color/black"
-            android:textSize="16dp"
-            android:layout_marginTop="20dp"
-            />
-
-        <EditText
-            android:id="@+id/name1"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:padding="18dp"
-            android:text=""
-            android:textColor="@color/black"
-            android:textSize="16dp"/>
-
-    </TableRow>
+    <ImageView
+        android:id="@+id/imageview"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/ic_add_white"
+        android:onClick="getImage"
+        />
     <!-- first row of the table layout-->
-    <TableRow
-        android:id="@+id/Row2"
-        android:layout_width="fill_parent"
+
+    <EditText
+        android:id="@+id/name1"
         android:layout_height="wrap_content"
-        >
-        <TextView
+        android:layout_width="wrap_content"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:text=""
+        android:layout_marginHorizontal="10dp"
+        android:hint="Name"
+        android:textColorHint="@color/black"
+        android:background="@drawable/rounded_corners"
+        android:textColor="@color/black"
+        android:textSize="15dp"/>
 
-            android:id="@+id/Email"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="18dp"
-            android:text="Email"
-            android:textColor="@color/black"
-            android:textSize="16dp"
-            />
+    <EditText
+        android:id="@+id/username"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:text=""
+        android:layout_marginHorizontal="10dp"
+        android:hint="Username"
+        android:textColorHint="@color/black"
+        android:background="@drawable/rounded_corners"
+        android:textColor="@color/black"
+        android:textSize="15dp"/>
+    <EditText
+        android:id="@+id/email_id"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:text=""
+        android:layout_marginHorizontal="10dp"
+        android:hint="Email"
+        android:textColorHint="@color/black"
+        android:background="@drawable/rounded_corners"
+        android:textColor="@color/black"
+        android:textSize="15dp"/>
 
-        <EditText
-            android:id="@+id/email_id"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:padding="18dp"
-            android:text=""
-            android:textColor="@color/black"
-            android:textSize="16dp"/>
-
-    </TableRow>
-    <TableRow
-
-        android:id="@+id/Row3"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-
-        <!-- first element of the row-->
-        <TextView
-
-            android:id="@+id/usernameLabel1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="18dp"
-            android:text="Username"
-            android:textColor="@color/black"
-            android:textSize="16dp"
-            />
-
-        <EditText
-            android:id="@+id/username"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:padding="18dp"
-            android:text=""
-            android:textColor="@color/black"
-            android:textSize="16dp"/>
-
-
-    </TableRow>
-    <TableRow
-
-        android:id="@+id/Row4"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-
-        <!-- first element of the row-->
-        <TextView
-
-            android:id="@+id/passwordLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="18dp"
-            android:text="Password"
-            android:textColor="@color/black"
-            android:textSize="16dp"
-            />
-
-        <EditText
-            android:id="@+id/password"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:padding="18dp"
-            android:text=""
-            android:inputType="textPassword"
-            android:textColor="@color/black"
-            android:textSize="16dp"/>
-
-
-    </TableRow>
-    <TableRow
-
-        android:id="@+id/Row5"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-
-        <!-- first element of the row-->
-        <TextView
-
-            android:id="@+id/cpasswordLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="18dp"
-            android:text=" Confirm Password"
-            android:textColor="@color/black"
-            android:textSize="16dp"
-            />
-
-        <EditText
-            android:id="@+id/cpassword"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:padding="18dp"
-            android:text=""
-            android:textColor="@color/black"
-            android:inputType="textPassword"
-            android:textSize="16dp"/>
-
-
-    </TableRow>
-
+    <!-- first element of the row-->
+    <EditText
+        android:id="@+id/password"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:padding="10dp"
+        android:layout_marginHorizontal="10dp"
+        android:text=""
+        android:inputType="textPassword"
+        android:background="@drawable/rounded_corners"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:textSize="15dp"
+        android:hint="Password"
+        android:textColorHint="@color/black"
+        />
+    <EditText
+        android:id="@+id/cpassword"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:padding="10dp"
+        android:layout_marginHorizontal="10dp"
+        android:text=""
+        android:inputType="textPassword"
+        android:background="@drawable/rounded_corners"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:textSize="15dp"
+        android:hint="Confirm Password"
+        android:textColorHint="@color/black"
+        />
 
     <Button
-        android:id="@+id/register"
+        android:id="@+id/login"
         android:text="Register"
-        android:layout_marginHorizontal="80dp"
-        android:layout_marginVertical="20dp"
-        android:background="@color/purple_500"
-        android:onClick="register"
-        android:backgroundTint="#330000"
-        android:textColor="@color/white"
-        >
-
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="50dp"
+        android:padding="20dp"
+        android:backgroundTint="@color/purple_500"
+        android:onClick="register">
     </Button>
 
 </TableLayout>

@@ -1,6 +1,7 @@
 package com.firstapp.myapplication;
 
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -13,12 +14,22 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class RegisterActivity extends AppCompatActivity {
     Button button;
     ImageView imageView;
     int PICTURE = 100;
     Drawable d = null;
     EditText na,uname,email,pwd,cpwd;
+    FirebaseFirestore db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,8 +39,10 @@ public class RegisterActivity extends AppCompatActivity {
         email = (EditText) findViewById(R.id.email_id);
         pwd = (EditText) findViewById(R.id.password);
         cpwd = (EditText) findViewById(R.id.cpassword);
-        button = findViewById(R.id.button);
+
         imageView = findViewById(R.id.imageview);
+
+        db = FirebaseFirestore.getInstance();
 
 
     }
@@ -53,9 +66,29 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
         else{
-            Toast.makeText(getApplicationContext(), "Registered Successfully.",Toast.LENGTH_SHORT).show();
-            Intent RegisterPage = new Intent(RegisterActivity.this, LoginActivity.class);
-            startActivity(RegisterPage);
+            Map<String,Object> user = new HashMap<>();
+            user.put("name",name);
+            user.put("username",username);
+            user.put("email",emailid);
+            user.put("password",pass);
+
+            db.collection("user")
+                    .add(user)
+                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                        @Override
+                        public void onSuccess(DocumentReference documentReference) {
+                            Toast.makeText(getApplicationContext(), "Registration successful",Toast.LENGTH_SHORT).show();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(getApplicationContext(), "Registration failed",Toast.LENGTH_SHORT).show();
+
+                }
+            });
+
+
+
         }
     }
 

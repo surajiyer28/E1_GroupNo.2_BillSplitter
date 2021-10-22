@@ -318,3 +318,4 @@ public class AddEditBillActivity extends AppCompatActivity implements AdapterVie
         return bmpImage;
     }
 }
+
