@@ -6,9 +6,9 @@
     tools:ignore="HardcodedText">
     <TextView
         android:id="@+id/spinner_item_member_name"
-        android:padding="10dp"
+        android:paddingHorizontal="20dp"
         android:textSize="17sp"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Name" />

@@ -11,10 +11,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#515050"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="@color/black"
         android:paddingTop="2.5dp"
         android:paddingBottom="2.5dp"
-        android:scrollbars="vertical" />
+        android:scrollbars="vertical"
+        />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/membersFragmentAdd"

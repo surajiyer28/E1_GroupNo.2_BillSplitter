@@ -15,11 +15,12 @@
         <entry key="..\:/GitHub/MiniProject/app/src/main/res/drawable/profile_image.xml" value="0.2713541666666667" />
         <entry key="..\:/GitHub/MiniProject/app/src/main/res/drawable/rectangle.xml" value="0.2713541666666667" />
         <entry key="..\:/GitHub/MiniProject/app/src/main/res/drawable/rounded_corners.xml" value="0.13072916666666667" />
-        <entry key="..\:/GitHub/MiniProject/app/src/main/res/layout/activity_add_new_bill.xml" value="0.2552083333333333" />
+        <entry key="..\:/GitHub/MiniProject/app/src/main/res/layout/activity_add_new_bill.xml" value="0.2" />
         <entry key="..\:/GitHub/MiniProject/app/src/main/res/layout/activity_main.xml" value="0.10550458715596331" />
         <entry key="..\:/GitHub/MiniProject/app/src/main/res/layout/add_member_avatar_spinner_row.xml" value="0.23854166666666668" />
         <entry key="..\:/GitHub/MiniProject/app/src/main/res/layout/balances_detail.xml" value="0.4" />
         <entry key="..\:/GitHub/MiniProject/app/src/main/res/layout/balances_fragment.xml" value="0.128125" />
+        <entry key="..\:/GitHub/MiniProject/app/src/main/res/layout/color_spinner_layout.xml" value="0.264" />
         <entry key="..\:/GitHub/MiniProject/app/src/main/res/layout/create_new_group_activity.xml" value="0.15462962962962962" />
         <entry key="..\:/GitHub/MiniProject/app/src/main/res/layout/expense_detail.xml" value="0.128125" />
         <entry key="..\:/GitHub/MiniProject/app/src/main/res/layout/expenses_fragment.xml" value="0.23854166666666668" />
@@ -30,6 +31,8 @@
         <entry key="..\:/GitHub/MiniProject/app/src/main/res/layout/member_detail.xml" value="0.128125" />
         <entry key="..\:/GitHub/MiniProject/app/src/main/res/layout/members_fragment.xml" value="0.23854166666666668" />
         <entry key="..\:/GitHub/MiniProject/app/src/main/res/layout/register.xml" value="0.16" />
+        <entry key="..\:/GitHub/MiniProject/app/src/main/res/layout/spinner_dropdown_layout.xml" value="0.1814814814814815" />
+        <entry key="..\:/GitHub/MiniProject/app/src/main/res/layout/spinner_item_member.xml" value="0.24074074074074073" />
         <entry key="..\:/GitHub/MiniProject/app/src/main/res/layout/toolbar.xml" value="0.25416666666666665" />
         <entry key="..\:/GitHub/MiniProject/app/src/main/res/menu/group_list_menu.xml" value="0.13020833333333334" />
         <entry key="..\:/GitHub/MiniProject/app/src/main/res/menu/save_group_bar_menu.xml" value="0.1675925925925926" />
