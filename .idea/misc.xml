@@ -33,15 +33,19 @@
         <entry key="..\:/GitHub/MiniProject/app/src/main/res/layout/toolbar.xml" value="0.25416666666666665" />
         <entry key="..\:/GitHub/MiniProject/app/src/main/res/menu/group_list_menu.xml" value="0.13020833333333334" />
         <entry key="..\:/GitHub/MiniProject/app/src/main/res/menu/save_group_bar_menu.xml" value="0.1675925925925926" />
+        <entry key="app/src/main/res/drawable/bg_round.xml" value="0.2604166666666667" />
         <entry key="app/src/main/res/drawable/ic_add_white.xml" value="0.4194871794871795" />
         <entry key="app/src/main/res/drawable/ic_check_white.xml" value="0.4194871794871795" />
         <entry key="app/src/main/res/layout/activity_add_new_bill.xml" value="0.21875" />
         <entry key="app/src/main/res/layout/activity_ingroup.xml" value="0.2572463768115942" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.234375" />
+        <entry key="app/src/main/res/layout/activity_maps.xml" value="0.234375" />
         <entry key="app/src/main/res/layout/add_member_activity.xml" value="0.20643363728470113" />
         <entry key="app/src/main/res/layout/balances_detail.xml" value="0.23233695652173914" />
+        <entry key="app/src/main/res/layout/balances_fragment.xml" value="0.25226449275362317" />
         <entry key="app/src/main/res/layout/create_new_group_activity.xml" value="0.2572463768115942" />
         <entry key="app/src/main/res/layout/expense_detail.xml" value="0.2875" />
+        <entry key="app/src/main/res/layout/expenses_fragment.xml" value="0.2427536231884058" />
         <entry key="app/src/main/res/layout/group_list_activity.xml" value="0.234375" />
         <entry key="app/src/main/res/layout/handle_on_group_click_activity.xml" value="0.234375" />
         <entry key="app/src/main/res/layout/login.xml" value="0.2572463768115942" />

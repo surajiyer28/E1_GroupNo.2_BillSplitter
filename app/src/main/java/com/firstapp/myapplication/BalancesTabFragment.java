@@ -142,6 +142,7 @@ public class BalancesTabFragment extends Fragment {
 
         recyclerView = view.findViewById(R.id.balancesRecyclerView);
         emptyView = view.findViewById(R.id.no_data);
+
         recyclerView.setHasFixedSize(true);
         adapter = new BalancesTabViewAdapter();
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -173,6 +174,7 @@ public class BalancesTabFragment extends Fragment {
             header.setVisibility(View.GONE);
         } else  {
             recyclerView.setVisibility(View.VISIBLE);
+            header.setVisibility(View.VISIBLE);
             emptyView.setVisibility(View.GONE);
             adapter.storeToList(results); // update the recycler view with the new results
         }

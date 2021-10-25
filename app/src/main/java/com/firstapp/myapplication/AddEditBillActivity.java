@@ -38,11 +38,15 @@ import java.util.List;
 
 /* Note that this activity can act as a Add Bill Activity or Edit Bill Activity based on the intent data we receive*/
 public class AddEditBillActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    private EditText editTextItem;
-    private EditText editTextCost;
+    public EditText editTextItem;
+    public EditText editTextCost;
+    public EditText locdisplay;
     private String currency;
     private String gName;
     private String paidBy;
+    public String y;
+    public String icost;
+
     private int memberId;
     private byte [] image;
     private int requestCode;
@@ -104,7 +108,13 @@ public class AddEditBillActivity extends AppCompatActivity implements AdapterVie
         setContentView(R.layout.activity_add_new_bill);
 
         imageView = findViewById(R.id.userImage);
+        locdisplay = findViewById(R.id.locdisplay);
         bmpImage = null;
+
+
+
+
+
 
         // set toolbar
         Toolbar toolbar = findViewById(R.id.addBillToolbar);
@@ -161,6 +171,7 @@ public class AddEditBillActivity extends AppCompatActivity implements AdapterVie
         billId = intent.getIntExtra("billId",-1);
         currency = intent.getStringExtra("groupCurrency");
 
+
         // spinner for select currency
         Spinner spinner = findViewById(R.id.addBillItemCurrencySpinner);
         final ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(this,R.array.currencySymbols,android.R.layout.simple_spinner_item);
@@ -198,6 +209,15 @@ public class AddEditBillActivity extends AppCompatActivity implements AdapterVie
 
         });
 
+        if(intent.hasExtra("location")) {
+
+            locdisplay.setText(intent.getStringExtra("location"));
+            editTextItem.setText(intent.getStringExtra("item_name")); // set default text received from the intent
+            editTextCost.setText(intent.getStringExtra("cost")); // set default text received from the intent
+
+
+        }
+
         if(intent.hasExtra("billId")) {
             // Only edit bill intent sends "billId" with it
             // Get data from the edit bill intent that started this activity
@@ -208,6 +228,7 @@ public class AddEditBillActivity extends AppCompatActivity implements AdapterVie
             bmpImage = DataConverter.convertByteArray2Image(image);
             imageView.setImageBitmap(bmpImage);
             paidBy = intent.getStringExtra("billPaidBy");
+
         } else {
             setTitle("Add an Expense");
         }
@@ -316,6 +337,17 @@ public class AddEditBillActivity extends AppCompatActivity implements AdapterVie
     public Bitmap getBmpImage() {
 
         return bmpImage;
+    }
+
+    public void addloc(View view) {
+
+        String item = editTextItem.getText().toString();
+        String cost = editTextCost.getText().toString();
+        Intent addloc = new Intent(AddEditBillActivity.this, MapsActivity.class);
+        addloc.putExtra("item_name", item );
+        addloc.putExtra("cost", cost );
+        startActivity(addloc);
+
     }
 }
 
