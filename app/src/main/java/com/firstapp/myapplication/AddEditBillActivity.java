@@ -77,16 +77,17 @@ public class AddEditBillActivity extends AppCompatActivity implements AdapterVie
             // Round up the cost of the bill to 2 decimal places
             BigDecimal decimal = new BigDecimal(cost);
             BigDecimal res = decimal.setScale(2, RoundingMode.HALF_EVEN);
-
+            String location = locdisplay.getText().toString();
             // store to database
 //            Log.d("1", Integer.toString(memberId));
             image = DataConverter.convertBitmap2ByteArray(bmpImage);
-            billViewModel.insert(new BillEntity(memberId,item,res.toString(),gName,paidBy, image));
+            billViewModel.insert(new BillEntity(memberId,item,res.toString(),gName,paidBy, image,location));
         }
 
         if(requestCode == 2) { // 2 for Edit Bill Activity
+            String location = locdisplay.getText().toString();
             image = DataConverter.convertBitmap2ByteArray(bmpImage);
-            BillEntity bill = new BillEntity(memberId,item,cost,gName,paidBy, image);
+            BillEntity bill = new BillEntity(memberId,item,cost,gName,paidBy, image, location);
             bill.setId(billId);
 
             /* update the database. note that update operation in billViewModel looks for a row in BillEntity where the value of column("Id")  = billId
@@ -340,12 +341,17 @@ public class AddEditBillActivity extends AppCompatActivity implements AdapterVie
     }
 
     public void addloc(View view) {
-
+        String rc = requestCode + "";
         String item = editTextItem.getText().toString();
         String cost = editTextCost.getText().toString();
         Intent addloc = new Intent(AddEditBillActivity.this, MapsActivity.class);
         addloc.putExtra("item_name", item );
+        addloc.putExtra("reqCode",rc);
         addloc.putExtra("cost", cost );
+        addloc.putExtra(GroupListActivity.EXTRA_TEXT_GNAME,gName);
+        addloc.putExtra("memberId",memberId);
+        addloc.putExtra("billId",billId);
+        addloc.putExtra("grpCurrency",currency);
         startActivity(addloc);
 
     }

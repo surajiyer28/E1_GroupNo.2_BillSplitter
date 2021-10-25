@@ -52,6 +52,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     SearchView searchView;
     public String item_name;
     public String cost;
+    public String rcode;
+    public String gName;
+    public int memberId;
+    public int billId;
+    public String currency;
 
 
 
@@ -243,14 +248,24 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         Intent addloc = getIntent();
         item_name = addloc.getStringExtra("item_name");
+        rcode = addloc.getStringExtra("reqCode");
         cost = addloc.getStringExtra("cost");
-
+        gName = addloc.getStringExtra(GroupListActivity.EXTRA_TEXT_GNAME);
+        memberId = addloc.getIntExtra("memberId",-1);
+        billId = addloc.getIntExtra("billId",-1);
+        currency = addloc.getStringExtra("grpCurrency");
 
 
         Intent Confirm = new Intent(MapsActivity.this, AddEditBillActivity.class);
         Confirm.putExtra("location", globalAddress);
         Confirm.putExtra("item_name", item_name );
+        Confirm.putExtra("requestCode",Integer.parseInt(rcode));
         Confirm.putExtra("cost", cost );
+        Confirm.putExtra(GroupListActivity.EXTRA_TEXT_GNAME,gName);
+        Confirm.putExtra("billMemberId",memberId);
+        Confirm.putExtra("billId",billId);
+        Confirm.putExtra("groupCurrency",currency);
+
 
 
 
