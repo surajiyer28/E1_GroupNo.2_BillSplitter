@@ -44,7 +44,7 @@
             android:maxLines="1"
             android:ellipsize="end"
             android:text="Aanchal Mani"
-            android:textColor="#000000"
+            android:textColor="#ffff"
             android:textSize="18sp"
             android:textStyle="bold" />
 

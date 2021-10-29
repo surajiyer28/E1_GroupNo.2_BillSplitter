@@ -12,6 +12,9 @@
         <entry key="..\:/Android Studio/android-design-library-master/MiniProject/app/src/main/res/layout/toolbar.xml" value="0.13020833333333334" />
         <entry key="..\:/GitHub/MiniProject/app/src/main/res/drawable/circle.xml" value="0.2713541666666667" />
         <entry key="..\:/GitHub/MiniProject/app/src/main/res/drawable/ic_add_white.xml" value="0.2713541666666667" />
+        <entry key="..\:/GitHub/MiniProject/app/src/main/res/drawable/ic_check_white.xml" value="0.2713541666666667" />
+        <entry key="..\:/GitHub/MiniProject/app/src/main/res/drawable/ic_close_white.xml" value="0.2713541666666667" />
+        <entry key="..\:/GitHub/MiniProject/app/src/main/res/drawable/ic_group_add_white.xml" value="0.2713541666666667" />
         <entry key="..\:/GitHub/MiniProject/app/src/main/res/drawable/profile_image.xml" value="0.2713541666666667" />
         <entry key="..\:/GitHub/MiniProject/app/src/main/res/drawable/rectangle.xml" value="0.2713541666666667" />
         <entry key="..\:/GitHub/MiniProject/app/src/main/res/drawable/rounded_corners.xml" value="0.13072916666666667" />
@@ -34,6 +37,7 @@
         <entry key="..\:/GitHub/MiniProject/app/src/main/res/layout/spinner_dropdown_layout.xml" value="0.1814814814814815" />
         <entry key="..\:/GitHub/MiniProject/app/src/main/res/layout/spinner_item_member.xml" value="0.24074074074074073" />
         <entry key="..\:/GitHub/MiniProject/app/src/main/res/layout/toolbar.xml" value="0.25416666666666665" />
+        <entry key="..\:/GitHub/MiniProject/app/src/main/res/menu/add_bill_action_bar_menu.xml" value="0.2552083333333333" />
         <entry key="..\:/GitHub/MiniProject/app/src/main/res/menu/group_list_menu.xml" value="0.13020833333333334" />
         <entry key="..\:/GitHub/MiniProject/app/src/main/res/menu/save_group_bar_menu.xml" value="0.1675925925925926" />
         <entry key="app/src/main/res/drawable/ic_add_white.xml" value="0.4194871794871795" />

@@ -26,13 +26,16 @@ import androidx.room.PrimaryKey;
                 @Index(name="GroupNameIndexBill",value = {"GroupName"})
         })
 public class BillEntity {
-    BillEntity(int mid, String item, String cost, String gName, String paidBy, byte [] image) {
+
+
+    BillEntity(int mid, String item, String cost, String gName, String paidBy, byte[] image, String location) {
         this.image = image;
         this.mid = mid;
         this.item = item;
         this.cost = cost;
         this.gName = gName;
         this.paidBy = paidBy;
+        this.location = location;
 
 
     }
@@ -58,6 +61,9 @@ public class BillEntity {
 
     @ColumnInfo(name = "image", typeAffinity = ColumnInfo.BLOB)
     byte [] image;
+
+    @ColumnInfo(name = "Location")
+    public String location;
 
 
     public void setId(int id) {

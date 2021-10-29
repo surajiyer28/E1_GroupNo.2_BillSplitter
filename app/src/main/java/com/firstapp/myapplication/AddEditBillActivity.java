@@ -38,11 +38,15 @@ import java.util.List;
 
 /* Note that this activity can act as a Add Bill Activity or Edit Bill Activity based on the intent data we receive*/
 public class AddEditBillActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    private EditText editTextItem;
-    private EditText editTextCost;
+    public EditText editTextItem;
+    public EditText editTextCost;
+    public EditText locdisplay;
     private String currency;
     private String gName;
     private String paidBy;
+    public String y;
+    public String icost;
+
     private int memberId;
     private byte [] image;
     private int requestCode;
@@ -73,21 +77,24 @@ public class AddEditBillActivity extends AppCompatActivity implements AdapterVie
             // Round up the cost of the bill to 2 decimal places
             BigDecimal decimal = new BigDecimal(cost);
             BigDecimal res = decimal.setScale(2, RoundingMode.HALF_EVEN);
-
+            String location = locdisplay.getText().toString();
             // store to database
 //            Log.d("1", Integer.toString(memberId));
             image = DataConverter.convertBitmap2ByteArray(bmpImage);
-            billViewModel.insert(new BillEntity(memberId,item,res.toString(),gName,paidBy, image));
+            billViewModel.insert(new BillEntity(memberId,item,res.toString(),gName,paidBy, image,location));
+            Intent i = new Intent(AddEditBillActivity.this, ExpensesTabFragment.class);
         }
 
         if(requestCode == 2) { // 2 for Edit Bill Activity
+            String location = locdisplay.getText().toString();
             image = DataConverter.convertBitmap2ByteArray(bmpImage);
-            BillEntity bill = new BillEntity(memberId,item,cost,gName,paidBy, image);
+            BillEntity bill = new BillEntity(memberId,item,cost,gName,paidBy, image, location);
             bill.setId(billId);
 
             /* update the database. note that update operation in billViewModel looks for a row in BillEntity where the value of column("Id")  = billId
                and if found, updates other columns in the row */
             billViewModel.update(bill);
+            Intent i = new Intent(AddEditBillActivity.this, ExpensesTabFragment.class);
         }
 
         // updates the group currency
@@ -95,6 +102,7 @@ public class AddEditBillActivity extends AppCompatActivity implements AdapterVie
         GroupEntity group = new GroupEntity(gName);
         group.gCurrency = currency;
         groupViewModel.update(group);
+
     }
 
     @Override
@@ -104,7 +112,13 @@ public class AddEditBillActivity extends AppCompatActivity implements AdapterVie
         setContentView(R.layout.activity_add_new_bill);
 
         imageView = findViewById(R.id.userImage);
+        locdisplay = findViewById(R.id.locdisplay);
         bmpImage = null;
+
+
+
+
+
 
         // set toolbar
         Toolbar toolbar = findViewById(R.id.addBillToolbar);
@@ -161,6 +175,7 @@ public class AddEditBillActivity extends AppCompatActivity implements AdapterVie
         billId = intent.getIntExtra("billId",-1);
         currency = intent.getStringExtra("groupCurrency");
 
+
         // spinner for select currency
         Spinner spinner = findViewById(R.id.addBillItemCurrencySpinner);
         final ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(this,R.array.currencySymbols,android.R.layout.simple_spinner_item);
@@ -198,6 +213,19 @@ public class AddEditBillActivity extends AppCompatActivity implements AdapterVie
 
         });
 
+        if(intent.hasExtra("location")) {
+
+            locdisplay.setText(intent.getStringExtra("location"));
+            editTextItem.setText(intent.getStringExtra("item_name")); // set default text received from the intent
+            editTextCost.setText(intent.getStringExtra("cost")); // set default text received from the intent
+            paidBy = intent.getStringExtra("billPaidBy");
+
+            image = intent.getByteArrayExtra("billImage");
+            bmpImage = DataConverter.convertByteArray2Image(image);
+            imageView.setImageBitmap(bmpImage);
+
+
+        }
         if(intent.hasExtra("billId")) {
             // Only edit bill intent sends "billId" with it
             // Get data from the edit bill intent that started this activity
@@ -208,9 +236,12 @@ public class AddEditBillActivity extends AppCompatActivity implements AdapterVie
             bmpImage = DataConverter.convertByteArray2Image(image);
             imageView.setImageBitmap(bmpImage);
             paidBy = intent.getStringExtra("billPaidBy");
+
         } else {
             setTitle("Add an Expense");
         }
+
+
 
     }
 
@@ -262,9 +293,8 @@ public class AddEditBillActivity extends AppCompatActivity implements AdapterVie
             case R.id.addBillItemCurrencySpinner:
                 currency = parent.getItemAtPosition(position).toString();
                 break;
-//                Log.d("p", "selected currency");
+
             case R.id.addBillItemPaidBy:
-//                Log.d("t", "selected paidBy");
                 MemberEntity member = (MemberEntity) parent.getItemAtPosition(position);
                 paidBy = member.name;
                 memberId = member.id;
@@ -316,6 +346,25 @@ public class AddEditBillActivity extends AppCompatActivity implements AdapterVie
     public Bitmap getBmpImage() {
 
         return bmpImage;
+    }
+
+    public void addloc(View view) {
+        String rc = requestCode + "";
+        String item = editTextItem.getText().toString();
+        String cost = editTextCost.getText().toString();
+        image = DataConverter.convertBitmap2ByteArray(bmpImage);
+        Intent addloc = new Intent(AddEditBillActivity.this, MapsActivity.class);
+        addloc.putExtra("item_name", item );
+        addloc.putExtra("reqCode",rc);
+        addloc.putExtra("cost", cost );
+        addloc.putExtra(GroupListActivity.EXTRA_TEXT_GNAME,gName);
+        addloc.putExtra("memberId",memberId);
+        addloc.putExtra("billId",billId);
+        addloc.putExtra("billImage",image);
+        addloc.putExtra("billPaidBy",paidBy);
+        addloc.putExtra("grpCurrency",currency);
+        startActivity(addloc);
+
     }
 }
 

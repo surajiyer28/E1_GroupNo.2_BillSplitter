@@ -9,9 +9,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:ignore="HardcodedText"
-    app:cardCornerRadius="10dp"
-    android:backgroundTint="@color/white"
-    android:background="@color/white">
+    app:cardCornerRadius="10dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -25,7 +23,7 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="27dp"
             android:layout_marginLeft="15dp"
             android:layout_marginStart="15dp"
             android:text="Aanchal Mani"
@@ -45,7 +43,7 @@
             android:layout_toEndOf="@+id/balanceDetailSender"
             android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="27dp"
             android:text="owes"
             android:textColor="@android:color/holo_green_dark"
             android:textSize="19sp"
@@ -63,10 +61,10 @@
             android:layout_toRightOf="@+id/balanceDetailOwes"
             android:layout_toEndOf="@+id/balanceDetailOwes"
             android:layout_marginLeft="10dp"
-            android:text="Suraj Iyer"
+            android:text="Rabiya Idrishi"
             android:maxLines="2"
             android:ellipsize="end"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="27dp"
             android:textColor="@color/colorTextMain"
             android:textSize="19sp"
             android:textStyle="bold" />
@@ -75,7 +73,7 @@
             android:layout_width="400dp"
             android:layout_height="1dp"
             android:layout_alignTop="@+id/balanceDetailSender"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="47dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_marginLeft="10dp"

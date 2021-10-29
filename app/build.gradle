@@ -26,6 +26,9 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
@@ -34,6 +37,9 @@ dependencies {
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0-alpha03'
     implementation 'com.google.firebase:firebase-firestore:21.4.0'
+    implementation 'com.google.android.gms:play-services-tasks:17.2.1'
+    implementation 'com.google.android.gms:play-services-maps:17.0.1'
+    implementation 'com.google.android.gms:play-services-location:18.0.0'
     annotationProcessor "androidx.lifecycle:lifecycle-compiler:2.1.0"
     implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
     implementation "androidx.recyclerview:recyclerview:1.0.0"
