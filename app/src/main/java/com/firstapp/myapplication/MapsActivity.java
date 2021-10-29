@@ -51,13 +51,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private Marker marker;
     SearchView searchView;
     public String item_name;
+    public String currency;
     public String cost;
+    public String paidby;
+    public byte [] image;
     public String rcode;
     public String gName;
     public int memberId;
     public int billId;
-    public String currency;
-
 
 
 
@@ -76,6 +77,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
 
+        Intent addloc = getIntent();
+        item_name = addloc.getStringExtra("item_name");
+         rcode = addloc.getStringExtra("reqCode");
+        cost = addloc.getStringExtra("cost");
+         gName = addloc.getStringExtra(GroupListActivity.EXTRA_TEXT_GNAME);
+        memberId = addloc.getIntExtra("memberId", -1);
+         billId = addloc.getIntExtra("billId", -1);
+        currency = addloc.getStringExtra("grpCurrency");
+        image = addloc.getByteArrayExtra("billImage");
+        paidby = addloc.getStringExtra("billPaidBy");
+
+
+
+
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
@@ -91,8 +106,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         e.printStackTrace();
                     }
                     Address address = addressList.get(0);
-                    String nAddress = address.getAddressLine(0);
-                    globalAddress = nAddress;
+                    String newadd = address.getAddressLine(0);
+                    globalAddress = newadd;
                     LatLng latLng = new LatLng(address.getLatitude(),address.getLongitude());
                     mMap.addMarker((new MarkerOptions().position(latLng).title(location)));
                     mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,20));
@@ -213,7 +228,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                 selectedAddress = knownName +", " + city + ", " + state + ", " + country;
 
-                
 
                 if(mAddress != null){
                     MarkerOptions markerOptions = new MarkerOptions();
@@ -225,7 +239,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 }
 
                 else{
-                    Toast.makeText(this , "Something went wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this , "What went wrong", Toast.LENGTH_SHORT).show();
                 }
             }
             else {
@@ -246,14 +260,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     public void confirm(View view) {
 
-        Intent addloc = getIntent();
-        item_name = addloc.getStringExtra("item_name");
-        rcode = addloc.getStringExtra("reqCode");
-        cost = addloc.getStringExtra("cost");
-        gName = addloc.getStringExtra(GroupListActivity.EXTRA_TEXT_GNAME);
-        memberId = addloc.getIntExtra("memberId",-1);
-        billId = addloc.getIntExtra("billId",-1);
-        currency = addloc.getStringExtra("grpCurrency");
+
+
+
 
 
         Intent Confirm = new Intent(MapsActivity.this, AddEditBillActivity.class);
@@ -263,8 +272,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Confirm.putExtra("cost", cost );
         Confirm.putExtra(GroupListActivity.EXTRA_TEXT_GNAME,gName);
         Confirm.putExtra("billMemberId",memberId);
-        Confirm.putExtra("billId",billId);
+        Confirm.putExtra("locid",billId);
         Confirm.putExtra("groupCurrency",currency);
+        Confirm.putExtra("billImage",image);
+        Confirm.putExtra("billPaidBy",paidby);
 
 
 

@@ -120,6 +120,7 @@ public class ExpensesTabFragment extends Fragment {
                 intent.putExtra("billName",bill.item);
                 intent.putExtra("groupCurrency", currency.toString());
                 intent.putExtra("billImage",bill.image);
+                intent.putExtra("location",bill.location);
                 intent.putExtra(GroupListActivity.EXTRA_TEXT_GNAME,bill.gName);
                 intent.putExtra("requestCode",2); // using requestCode(value = 2) to identify edit expense intent
 

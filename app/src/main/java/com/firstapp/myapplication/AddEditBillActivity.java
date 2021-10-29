@@ -82,6 +82,7 @@ public class AddEditBillActivity extends AppCompatActivity implements AdapterVie
 //            Log.d("1", Integer.toString(memberId));
             image = DataConverter.convertBitmap2ByteArray(bmpImage);
             billViewModel.insert(new BillEntity(memberId,item,res.toString(),gName,paidBy, image,location));
+            Intent i = new Intent(AddEditBillActivity.this, ExpensesTabFragment.class);
         }
 
         if(requestCode == 2) { // 2 for Edit Bill Activity
@@ -93,6 +94,7 @@ public class AddEditBillActivity extends AppCompatActivity implements AdapterVie
             /* update the database. note that update operation in billViewModel looks for a row in BillEntity where the value of column("Id")  = billId
                and if found, updates other columns in the row */
             billViewModel.update(bill);
+            Intent i = new Intent(AddEditBillActivity.this, ExpensesTabFragment.class);
         }
 
         // updates the group currency
@@ -100,6 +102,7 @@ public class AddEditBillActivity extends AppCompatActivity implements AdapterVie
         GroupEntity group = new GroupEntity(gName);
         group.gCurrency = currency;
         groupViewModel.update(group);
+
     }
 
     @Override
@@ -215,10 +218,14 @@ public class AddEditBillActivity extends AppCompatActivity implements AdapterVie
             locdisplay.setText(intent.getStringExtra("location"));
             editTextItem.setText(intent.getStringExtra("item_name")); // set default text received from the intent
             editTextCost.setText(intent.getStringExtra("cost")); // set default text received from the intent
+            paidBy = intent.getStringExtra("billPaidBy");
+
+            image = intent.getByteArrayExtra("billImage");
+            bmpImage = DataConverter.convertByteArray2Image(image);
+            imageView.setImageBitmap(bmpImage);
 
 
         }
-
         if(intent.hasExtra("billId")) {
             // Only edit bill intent sends "billId" with it
             // Get data from the edit bill intent that started this activity
@@ -233,6 +240,8 @@ public class AddEditBillActivity extends AppCompatActivity implements AdapterVie
         } else {
             setTitle("Add an Expense");
         }
+
+
 
     }
 
@@ -284,9 +293,8 @@ public class AddEditBillActivity extends AppCompatActivity implements AdapterVie
             case R.id.addBillItemCurrencySpinner:
                 currency = parent.getItemAtPosition(position).toString();
                 break;
-//                Log.d("p", "selected currency");
+
             case R.id.addBillItemPaidBy:
-//                Log.d("t", "selected paidBy");
                 MemberEntity member = (MemberEntity) parent.getItemAtPosition(position);
                 paidBy = member.name;
                 memberId = member.id;
@@ -344,6 +352,7 @@ public class AddEditBillActivity extends AppCompatActivity implements AdapterVie
         String rc = requestCode + "";
         String item = editTextItem.getText().toString();
         String cost = editTextCost.getText().toString();
+        image = DataConverter.convertBitmap2ByteArray(bmpImage);
         Intent addloc = new Intent(AddEditBillActivity.this, MapsActivity.class);
         addloc.putExtra("item_name", item );
         addloc.putExtra("reqCode",rc);
@@ -351,6 +360,8 @@ public class AddEditBillActivity extends AppCompatActivity implements AdapterVie
         addloc.putExtra(GroupListActivity.EXTRA_TEXT_GNAME,gName);
         addloc.putExtra("memberId",memberId);
         addloc.putExtra("billId",billId);
+        addloc.putExtra("billImage",image);
+        addloc.putExtra("billPaidBy",paidBy);
         addloc.putExtra("grpCurrency",currency);
         startActivity(addloc);
 
