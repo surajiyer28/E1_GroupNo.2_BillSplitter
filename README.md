@@ -71,6 +71,3 @@ Bill Splitter is an Android application designed to simplify expense sharing amo
 - Rabiya Idrishi (118A3017)
 - Suraj Iyer (118A3020)
 
-## License
-
-This project is licensed under the MIT License - see the LICENSE.md file for details.
